@@ -22,6 +22,8 @@
         <menus>
           <Menu fx:id="menuAcount" mnemonicParsing="false" text="Compte">
             <items>
+                  <MenuItem mnemonicParsing="false" text="Mettre a jour" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#addAcount" text="Ajouter un compte" />
                   <MenuItem mnemonicParsing="false" onAction="#delAcount" text="Supprimer un compte" />
                   <SeparatorMenuItem mnemonicParsing="false" />
