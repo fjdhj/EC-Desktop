@@ -1,12 +1,10 @@
 package fr.fjdhj.ECDesktop.view;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.fjdhj.ECDesktop.ECDesktop;
-import fr.fjdhj.ECDesktop.data.CSV;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -87,9 +85,5 @@ public class MainMenuMapping {
 	}
 	
 	@FXML
-	private void delAcount() {
-		CSV.addCSVLine(new File("account.csv"), "J'y sais pas3");
-		CSV.removeCSVLine(new File("account.csv"), "J'y sais pas");
-		
-	}
+	private void delAcount() {}
 }
