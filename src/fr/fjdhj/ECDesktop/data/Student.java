@@ -43,11 +43,9 @@ public class Student {
 		System.out.println(response);
 		
 		TransformRawFile.loginData(response, this);
-		
-		getCahierDeTexte();
 	}
 	
-	public void getCahierDeTexte() throws CodeException{
+	public void updateCahierDeTexte() throws CodeException{
 		//On génère le contenue de notre requetes
 		String data = "data={\"token\": \"" + getToken() +"\"}";
 		String link = HTTPRequest.MESSAGE_LINK.replace("id", getId());
@@ -57,11 +55,18 @@ public class Student {
 		try {
 			TransformRawFile.cahierDeTextData(response, this);
 		} catch (idException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 
+	}
+	
+	/**
+	 * Met a jour : le cahier de texte, le contenue des séance
+	 * @throws CodeException 
+	 */
+	public void update() throws CodeException {
+		updateCahierDeTexte();
 	}
 	
 	public void printAllInfo(){

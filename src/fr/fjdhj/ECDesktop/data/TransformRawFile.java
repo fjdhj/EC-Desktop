@@ -83,7 +83,7 @@ public class TransformRawFile {
 		//On parcour notre tableau, rangé de cette manière : YYYY-MM-dd:[{matiere:..., codeMatiere:..., aFaire:..., idDevoir:..., documentsAFaire:..., donneLe:..., effectue:..., interrogation:..., rendreEnLigne:...}, {un autre devoir}, ...]
 		for(String a : dayData) {
 			//On récupère la date du calendrier :
-			Date day = student.getCalendar().get(a.substring(0,10));
+			Date day = student.getCalendar().get(a.substring(0,10), true);
 			//On récupère chaque trvaille indépendament
 			a=a.substring(a.indexOf(":[{")+3);
 			String[] work = a.split("},\\{");
@@ -96,7 +96,7 @@ public class TransformRawFile {
 				boolean documentsAFaire  = Boolean.parseBoolean(w.substring(w.indexOf(" documentsAFaire:")+17, w.indexOf(", ", w.indexOf(" documentsAFaire:"))));
 				boolean effectue  = Boolean.parseBoolean(w.substring(w.indexOf(" effectue:")+10, w.indexOf(", ", w.indexOf(" effectue:"))));
 				
-				System.out.println("idDevoir : "+idDevoir+", Matiere : "+codeMatiere+", documentsAFaire : "+documentsAFaire+", effectue" +effectue);
+				System.out.println("idDevoir : "+idDevoir+", Matiere : "+codeMatiere+", documentsAFaire : "+documentsAFaire+", effectue : " +effectue);
 				
 				//Si il n'existe pas on le créer
 				if(!day.contain(idDevoir)) {

@@ -74,14 +74,14 @@
                   <Button mnemonicParsing="false" text="&gt;" BorderPane.alignment="CENTER" />
                </right>
                <center>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MOIS" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Text fx:id="textMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MOIS" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
                </center>
                <bottom>
-                  <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@css/Calendar.css" BorderPane.alignment="CENTER">
+                  <GridPane fx:id="calendarGrid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@css/Calendar.css" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" />
                         <ColumnConstraints hgrow="SOMETIMES" />
@@ -108,6 +108,7 @@
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="1" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="2" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -115,35 +116,34 @@
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="4" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.rowIndex="6" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="4" GridPane.rowIndex="6" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="5" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="99" GridPane.columnIndex="6" GridPane.rowIndex="6" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="lun.">
                            <font>
