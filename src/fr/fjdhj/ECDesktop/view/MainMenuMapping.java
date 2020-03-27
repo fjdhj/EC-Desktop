@@ -71,7 +71,7 @@ public class MainMenuMapping {
 	
 	public void updateCalendar() {
 		//On mets a jour le text du moi
-		textMonth.setText(Calendar.nameOfMonth(month));
+		textMonth.setText(Calendar.nameOfMonth(month)+" "+year);
 		
 		//On récupère le nombre de jour
 		int nbrDay = Calendar.numberOfDayInMonth(month, year);
@@ -157,6 +157,28 @@ public class MainMenuMapping {
 		
 		
 		
+	}
+	
+	@FXML
+	private void nextMonth() {
+		if(month==12) {
+			month=1;
+			year++;
+		}else {
+			month++;
+		}
+		updateCalendar();
+	}
+	
+	@FXML
+	private void previousMonth() {
+		if(month==1) {
+			month=12;
+			year--;
+		}else {
+			month--;
+		}
+		updateCalendar();
 	}
 	
 	
