@@ -134,6 +134,7 @@ public class MainMenuMapping {
 	@FXML
 	private void initialize() {
 		updateCalendar();
+		calendarGrid.getStylesheets().add(this.getClass().getResource("css/Calendar.css").toExternalForm());
 		
 		ObservableList<Node> child = calendarGrid.getChildren();
 		int i = 0;
