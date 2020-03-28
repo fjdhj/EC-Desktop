@@ -1,4 +1,4 @@
-package fr.fjdhj.ECDesktop.com;
+package fr.fjdhj.ECDesktop.exception;
 
 public class CodeException extends Exception{
 

@@ -1,4 +1,4 @@
-package fr.fjdhj.ECDesktop;
+package fr.fjdhj.ECDesktop.exception;
 
 public class OpenDefaultBrowserException extends Exception{
 

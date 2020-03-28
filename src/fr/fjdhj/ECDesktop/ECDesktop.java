@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import fr.fjdhj.ECDesktop.data.Student;
+import fr.fjdhj.ECDesktop.exception.OpenDefaultBrowserException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,6 +47,7 @@ public class ECDesktop extends Application {
 	}
 
 	public static void main(String[] args) {
+		
 		launch(args);
 	}
 	

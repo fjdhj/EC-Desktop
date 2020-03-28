@@ -1,8 +1,8 @@
 package fr.fjdhj.ECDesktop.data;
 
-import fr.fjdhj.ECDesktop.com.CodeException;
 import fr.fjdhj.ECDesktop.com.HTTPRequest;
-import fr.fjdhj.ECDesktop.data.exception.idException;
+import fr.fjdhj.ECDesktop.exception.CodeException;
+import fr.fjdhj.ECDesktop.exception.idException;
 
 public class Student {
 	

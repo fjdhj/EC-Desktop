@@ -1,4 +1,4 @@
-package fr.fjdhj.ECDesktop.data.exception;
+package fr.fjdhj.ECDesktop.exception;
 
 public class idException extends Exception{
 

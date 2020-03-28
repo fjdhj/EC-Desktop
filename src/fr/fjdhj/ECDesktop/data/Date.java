@@ -3,7 +3,7 @@ package fr.fjdhj.ECDesktop.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.fjdhj.ECDesktop.data.exception.idException;
+import fr.fjdhj.ECDesktop.exception.idException;
 
 public class Date{
 	

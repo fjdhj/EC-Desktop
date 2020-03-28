@@ -1,7 +1,7 @@
 package fr.fjdhj.ECDesktop.view;
 
 import fr.fjdhj.ECDesktop.ECDesktop;
-import fr.fjdhj.ECDesktop.com.CodeException;
+import fr.fjdhj.ECDesktop.exception.CodeException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

@@ -2,8 +2,8 @@ package fr.fjdhj.ECDesktop.data;
 
 import java.util.Base64;
 
-import fr.fjdhj.ECDesktop.com.CodeException;
-import fr.fjdhj.ECDesktop.data.exception.idException;
+import fr.fjdhj.ECDesktop.exception.CodeException;
+import fr.fjdhj.ECDesktop.exception.idException;
 
 public class TransformRawFile {
 
