@@ -1,11 +1,16 @@
 package fr.fjdhj.ECDesktop;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import fr.fjdhj.ECDesktop.data.Student;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -42,6 +47,39 @@ public class ECDesktop extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static void openDefaultWebBowser(String url) {
+		try {
+			String myOS = System.getProperty("os.name").toLowerCase();
+            if(Desktop.isDesktopSupported()) { //Peut être Windows
+                Desktop desktop = Desktop.getDesktop();
+                desktop.browse(new URI(url));
+            } else { //Definitivement pas windows
+                Runtime runtime = Runtime.getRuntime();
+                if(myOS.contains("mac")) { // Apples
+                    runtime.exec("open " + url);
+                } 
+                else if(myOS.contains("nix") || myOS.contains("nux")) { // Linux 
+                    runtime.exec("xdg-open " + url);
+                }
+                else {
+                	throw new OpenDefaultBrowserException("Impossible d'ouvrir le navigateur. Il est probable que votre system d'exploitation ne soit pas compatible");
+                }
+                    
+            }
+		}
+        catch(IOException | OpenDefaultBrowserException | URISyntaxException e) {
+            errorMessage("Erreur application", e.getMessage().toString(), e.toString());
+        }
+	}
+	
+	public static void errorMessage(String Title, String headerText, String contentText) {
+		Alert error = new Alert(AlertType.ERROR);
+		error.setTitle(Title);
+		error.setHeaderText(headerText);
+		error.setContentText(contentText);
+		error.showAndWait();
 	}
 	
 }

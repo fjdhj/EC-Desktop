@@ -17,6 +17,10 @@ public class HTTPRequest {
 	 * Il est necessaire de remplacer id par l'ID de l'élève
 	 */
 	public static final String MESSAGE_LINK = "https://api.ecoledirecte.com/v3/Eleves/id/cahierdetexte.awp?verbe=get&";
+	/**
+	 * Il est necessaire de remplacer id par l'ID de l'élève et date par la date voulue
+	 */
+	public static final String WORK_LINK = "https://api.ecoledirecte.com/v3/Eleves/id/cahierdetexte/date.awp?verbe=get&";
 	
 	public static final String DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded";
 	 

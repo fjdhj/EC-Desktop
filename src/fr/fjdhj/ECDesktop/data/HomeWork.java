@@ -6,19 +6,24 @@ public class HomeWork {
 	private String idDevoir;
 	private boolean containDoc;
 	private boolean effectue;
-
+	private boolean isAFaire;
+	
+	
+	private String work = "";
+	
 	/**
 	 * 
 	 * @param matiere
 	 * @param idDevoir
 	 * @param containDoc
-	 * @param aFaire
+	 * @param effectue
 	 */
-	public HomeWork(Matiere matiere, String idDevoir, boolean containDoc, boolean aFaire) {
+	public HomeWork(Matiere matiere, String idDevoir, boolean containDoc, boolean effectue, boolean isAFaire) {
 		this.matiere = matiere;
 		this.idDevoir = idDevoir;
 		this.containDoc = containDoc;
-		this.effectue = aFaire;
+		this.effectue = effectue;
+		this.isAFaire = isAFaire;
 	}
 
 	public Matiere getMatiere() {return matiere;}
@@ -30,7 +35,13 @@ public class HomeWork {
 	public boolean isContainDoc() {return containDoc;}
 	public void setContainDoc(boolean containDoc) {this.containDoc = containDoc;}
 
-	public boolean isAFaire() {return effectue;}
-	public void setAFaire(boolean aFaire) {this.effectue = aFaire;}
+	public boolean isEffectue() {return effectue;}
+	public void setEffectue(boolean effectue) {this.effectue = effectue;}
+
+	public String getWork() {return work;}
+	public void setWork(String work) {this.work = work;}
+
+	public boolean isAFaire() {return isAFaire;}
+	public void setAFaire(boolean isAFaire) {this.isAFaire = isAFaire;}
 
 }

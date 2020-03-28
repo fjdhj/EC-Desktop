@@ -42,10 +42,7 @@ public class LoginMapping {
 			info.setHeaderText("Connexion a été effectué avec le serveur");
 			info.showAndWait();
 		} catch (CodeException e) {
-			Alert error = new Alert(AlertType.ERROR);
-			error.setTitle("Erreur dans la réponse du serveur");
-			error.setHeaderText(e.getMessage());
-			error.showAndWait();
+			ECDesktop.errorMessage("Erreur dans la réponse du serveur", e.getMessage(), "");
 		}
 	}
 

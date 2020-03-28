@@ -1,14 +1,21 @@
 package fr.fjdhj.ECDesktop.view;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import fr.fjdhj.ECDesktop.ECDesktop;
 import fr.fjdhj.ECDesktop.data.Calendar;
+import fr.fjdhj.ECDesktop.data.Date;
+import fr.fjdhj.ECDesktop.data.HomeWork;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker;
+import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,14 +24,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -130,10 +140,47 @@ public class MainMenuMapping {
 			i++;
 		}
 	}
+	
+	public void updateWorkList() {
+		//On récupère le travaille du jour : day
+		Date d = ECDesktop.student.getCalendar().get(getString(year)+"-"+getString(month)+"-"+getString(day), false);
+		//On récupère les enfants de la liste de travaille
+		ObservableList<TitledPane> children = workList.getPanes();
+		//On enlève les élèments
+		children.remove(0, children.size());
+		
+		//On parcour nos devoir du jour
+		if(d!=null) {
+			for(HomeWork work : d.getHomeWork()) {
+				if(work.isAFaire()) {
+					TitledPane t = new TitledPane();
+					WebView browser = new WebView();
+					WebEngine webEngine = browser.getEngine();
+					webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+						@Override
+						public void changed(ObservableValue<? extends State> arg0, State oldState, State newState) {
+							if(newState==State.SCHEDULED && !webEngine.getLocation().equals("")) {
+								ECDesktop.openDefaultWebBowser(webEngine.getLocation());
+								//Comme l'anulation ne marche pas, on recharge notre contenue qui annule au passage la requettes
+								webEngine.loadContent(work.getWork());
+							}}});
+					ScrollPane scrollPane = new ScrollPane();
+					scrollPane.setContent(browser);
+					webEngine.loadContent(work.getWork());
+					t.setContent(scrollPane);
+					t.setText(work.getMatiere().getNom());
+					children.add(t);
+				}
+				
+			}
+		}
+		
+	}
 
 	@FXML
 	private void initialize() {
 		updateCalendar();
+		updateWorkList();
 		calendarGrid.getStylesheets().add(this.getClass().getResource("css/Calendar.css").toExternalForm());
 		
 		ObservableList<Node> child = calendarGrid.getChildren();
@@ -146,6 +193,7 @@ public class MainMenuMapping {
 				public void handle(ActionEvent arg0) {
 					setDay(Integer.parseInt(((Button) arg0.getSource()).getText()));
 					((Button) arg0.getSource()).setDefaultButton(true);
+					updateWorkList();
 				}
 				
 			});

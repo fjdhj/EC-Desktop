@@ -20,6 +20,11 @@ public class Date{
 				
 	}
 	
+	/**
+	 * 
+	 * @param idDevoir
+	 * @return
+	 */
 	public boolean contain(String idDevoir){
 		for(HomeWork work : homeWork) {
 			if(work.getIdDevoir().equals(idDevoir))
@@ -29,6 +34,12 @@ public class Date{
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @param idDevoir
+	 * @return
+	 * @throws idException
+	 */
 	public HomeWork getWork(String idDevoir) throws idException {
 		for(HomeWork work : homeWork) {
 			if(work.getIdDevoir().equals(idDevoir))
@@ -36,6 +47,42 @@ public class Date{
 		}
 		
 		throw new idException("L'id de type idDevoir : "+idDevoir+" est introuvable");
+	}
+	
+	/**
+	 * 
+	 * @param year
+	 * @param month
+	 * @param day
+	 * @return
+	 */
+	public static String formatDate(int year, int month, int day) {
+		String y = new Integer(year).toString();
+		String m;
+		String d;
+		if(month==1) {m = "01";}
+		else if(month==2) {m = "02";}
+		else if(month==3) {m = "03";}
+		else if(month==4) {m = "04";}
+		else if(month==5) {m = "05";}
+		else if(month==6) {m = "06";}
+		else if(month==7) {m = "07";}
+		else if(month==8) {m = "08";}
+		else if(month==9) {m = "09";}
+		else {m = new Integer(month).toString();}
+		
+		if(day==1) {d = "01";}
+		else if(day==2) {d = "02";}
+		else if(day==3) {d = "03";}
+		else if(day==4) {d = "04";}
+		else if(day==5) {d = "05";}
+		else if(day==6) {d = "06";}
+		else if(day==7) {d = "07";}
+		else if(day==8) {d = "08";}
+		else if(day==9) {d = "09";}
+		else {d = new Integer(day).toString();}
+		
+		return(y+"-"+m+"-"+d);
 	}
 
 	public int getYear() {return year;}

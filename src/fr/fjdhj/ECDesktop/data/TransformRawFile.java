@@ -1,5 +1,7 @@
 package fr.fjdhj.ECDesktop.data;
 
+import java.util.Base64;
+
 import fr.fjdhj.ECDesktop.com.CodeException;
 import fr.fjdhj.ECDesktop.data.exception.idException;
 
@@ -96,11 +98,9 @@ public class TransformRawFile {
 				boolean documentsAFaire  = Boolean.parseBoolean(w.substring(w.indexOf(" documentsAFaire:")+17, w.indexOf(", ", w.indexOf(" documentsAFaire:"))));
 				boolean effectue  = Boolean.parseBoolean(w.substring(w.indexOf(" effectue:")+10, w.indexOf(", ", w.indexOf(" effectue:"))));
 				
-				System.out.println("idDevoir : "+idDevoir+", Matiere : "+codeMatiere+", documentsAFaire : "+documentsAFaire+", effectue : " +effectue);
-				
 				//Si il n'existe pas on le créer
 				if(!day.contain(idDevoir)) {
-					day.addHomeWork(new HomeWork(codeMatiere, idDevoir, documentsAFaire, effectue));
+					day.addHomeWork(new HomeWork(codeMatiere, idDevoir, documentsAFaire, effectue, true));
 				//Si non on peut toujours met a jour le devoir
 				}else {
 					HomeWork temp = day.getWork(idDevoir);
@@ -111,6 +111,33 @@ public class TransformRawFile {
 			}
 				
 		}
+	}
+	
+	public static void workData(String content, Student student, Date day) throws CodeException, idException {
+		//On récupère les données
+		String data = getData(content, student);
+		
+		data = data.substring(28);
+		
+		String[] workData = data.split("},\\{entityCode:");
+		
+		for(String w : workData) {
+			Matiere mat = Matiere.getMatiere(w.substring(w.indexOf(" codeMatiere:")+13, w.indexOf(", ", w.indexOf(" codeMatiere:"))));
+			String id = w.substring(w.indexOf(" id:")+4, w.indexOf(", ", w.indexOf(" id:")));
+			
+			if(day.contain(id)) {
+				HomeWork work = day.getWork(id);
+				String aFaire = w.substring(w.indexOf(" aFaire:{"), w.indexOf(", contenuDeSeance:"));
+				work.setWork(new String(Base64.getDecoder().decode(aFaire.substring(aFaire.indexOf(" contenu:")+9, aFaire.indexOf(", ", aFaire.indexOf(" contenu:"))))));
+				
+			}else {
+				HomeWork work = new HomeWork(mat, w, false, false, false);
+				day.addHomeWork(work);
+			}
+			
+			 
+		}
+		
 	}
 
 }

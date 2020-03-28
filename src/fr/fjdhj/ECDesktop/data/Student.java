@@ -43,6 +43,9 @@ public class Student {
 		System.out.println(response);
 		
 		TransformRawFile.loginData(response, this);
+		
+		//On mets tous a jour
+		update();
 	}
 	
 	public void updateCahierDeTexte() throws CodeException{
@@ -58,7 +61,26 @@ public class Student {
 			e.printStackTrace();
 		}
 		
+		for(Date d : cal.getDate()) {
+			updateWork(d);
+		}
+		
 
+	}
+	
+	public void updateWork(Date date) throws CodeException {
+		//On génère le contenue de notre requetes
+		String data = "data={\"token\": \"" + getToken() +"\"}";
+		String link = HTTPRequest.WORK_LINK.replace("id", getId());
+		link = link.replace("date", Date.formatDate(date.getYear(), date.getMonth(), date.getDay()));
+		
+		//On envoie la requetes
+		String response = HTTPRequest.sendingPost(link, data, HTTPRequest.DEFAULT_CONTENT_TYPE);
+		try {
+			TransformRawFile.workData(response, this, date);
+		} catch (idException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
