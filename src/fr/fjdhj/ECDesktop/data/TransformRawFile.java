@@ -1,5 +1,6 @@
 package fr.fjdhj.ECDesktop.data;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 import fr.fjdhj.ECDesktop.exception.CodeException;
@@ -128,8 +129,9 @@ public class TransformRawFile {
 			if(day.contain(id)) {
 				HomeWork work = day.getWork(id);
 				String aFaire = w.substring(w.indexOf(" aFaire:{"), w.indexOf(", contenuDeSeance:"));
-				work.setWork(new String(Base64.getDecoder().decode(aFaire.substring(aFaire.indexOf(" contenu:")+9, aFaire.indexOf(", ", aFaire.indexOf(" contenu:"))))));
-				
+				try {
+					work.setWork(new String(Base64.getDecoder().decode(aFaire.substring(aFaire.indexOf(" contenu:")+9, aFaire.indexOf(", ", aFaire.indexOf(" contenu:")))), "UTF-8"));
+				} catch (UnsupportedEncodingException e) {e.printStackTrace();}
 			}else {
 				HomeWork work = new HomeWork(mat, w, false, false, false);
 				day.addHomeWork(work);
