@@ -12,8 +12,9 @@ import java.util.List;
 
 public class CSV {
 	
-	public static final String CSV_HEAD = "id,nom,prenom";
-	
+	public static final String ACCOUNT_CSV_HEAD = "id,nom,prenom";
+	public static final File ACCOUNT_CSV_LOCAT = new File("account.csv");
+	public static final String ACCOUNT_CSV_SEPARATOR = ",";
 
 	public CSV() {}
 
@@ -42,6 +43,12 @@ public class CSV {
 		return null;
 	}
 	
+	/**
+	 * Permet de lire un fichier CSV déja existant
+	 * @param Path Le chemin du fichier
+	 * @param separator Le separateur
+	 * @return Le contenue du fichier sous la forme : [clef1:contenu1,clef2:contenu2, ...],...
+	 */
 	public static List<String> readCSV(File Path, String separator) {
 		//On lit le fichier
 		List<String> content = read(Path);
@@ -71,6 +78,12 @@ public class CSV {
 		
 	}
 	
+	/**
+	 * Ecrit un nouveau fichier CSV. Si il existe, l'ancien contenue seras supprimé 
+	 * @param Path Le chemin du fichier
+	 * @param head Les paramettre
+	 * @param content Le contenue a mettre
+	 */
 	public static void writeCSV(File Path, String head, String[] content) {
 		BufferedWriter bufferedwriter = null;
 		System.out.println("Ecriture dans le fichier "+Path.toString());
@@ -94,6 +107,11 @@ public class CSV {
 		
 	}
 	
+	/**
+	 * Ajoute une ligne au fichier CSV fournie ne paramettre
+	 * @param Path Chemin du fichier CSV
+	 * @param content Le contenue de la ligne a ajouter
+	 */
 	public static void addCSVLine(File Path, String content) {
 		List<String> c = read(Path);
 		if(c!=null) {
@@ -107,6 +125,11 @@ public class CSV {
 		}
 	}
 	
+	/**
+	 * Retir une ligne du fichier CSV fournie en paramettre 
+	 * @param Path Chemin du fichier CSV
+	 * @param content Le contenue de la ligne a retirer
+	 */
 	public static void removeCSVLine(File Path, String content) {
 		List<String> c = read(Path);
 		if(c!=null) {
@@ -120,6 +143,16 @@ public class CSV {
 			}
 			writeCSV(Path, c.get(0), finalContent.split("\n"));
 		}
+	}
+	
+	/**
+	 * Renvoie l'information correspondant au paramettre fournie
+	 * @param line La ligne du fichier CSV (récupèrer avec readCSV(File Path, String separator))
+	 * @param info L'information a récuperer 
+	 * @return l'information correspondant au paramettre fournie
+	 */
+	public static String extract(String line, String param) {
+		return line.substring(line.indexOf(param)+param.length()+1, line.indexOf(",", line.indexOf(param)));
 	}
 	
 }

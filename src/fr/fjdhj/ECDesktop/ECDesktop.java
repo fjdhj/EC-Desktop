@@ -4,9 +4,12 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
+import fr.fjdhj.ECDesktop.data.CSV;
 import fr.fjdhj.ECDesktop.data.Student;
 import fr.fjdhj.ECDesktop.exception.OpenDefaultBrowserException;
+import fr.fjdhj.ECDesktop.view.MainMenuMapping;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +22,8 @@ public class ECDesktop extends Application {
 
 	private Stage stagePrincipal;
 	private BorderPane conteneurPrincipal;
+	
+	private final String encode = "adef";
 	
 	public static Student student = new Student();
 	
@@ -38,6 +43,16 @@ public class ECDesktop extends Application {
 			Scene scene = new Scene(conteneurPrincipal);
 			//Que nous affectons à notre Stage
 			stagePrincipal.setScene(scene);
+			
+			//On récupère le controleur
+			MainMenuMapping controller = loader.getController();
+			//On lui fournie nos student déjà stocké
+			List<String> content = CSV.readCSV(CSV.ACCOUNT_CSV_LOCAT, CSV.ACCOUNT_CSV_SEPARATOR);
+			for(String str : content) {
+				controller.addToListAcount(CSV.extract(str, "nom"));
+			}
+			controller.updateMenuAcount();
+			
 			//Pour l'afficher
 			stagePrincipal.show();
 		} catch (IOException e) {
@@ -47,8 +62,15 @@ public class ECDesktop extends Application {
 	}
 
 	public static void main(String[] args) {
-		
+		List<String> content = CSV.readCSV(CSV.ACCOUNT_CSV_LOCAT, CSV.ACCOUNT_CSV_SEPARATOR);
+		if(!content.isEmpty()) {
+			student.setId(CSV.extract(content.get(0), "id"));
+			student.setNom(CSV.extract(content.get(0), "nom"));
+			student.setPrenom(CSV.extract(content.get(0), "prenom"));
+			System.out.println(student.getNom());
+		}
 		launch(args);
+		
 	}
 	
 	public static void openDefaultWebBowser(String url) {

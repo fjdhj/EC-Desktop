@@ -1,8 +1,6 @@
 package fr.fjdhj.ECDesktop.view;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +12,6 @@ import fr.fjdhj.ECDesktop.data.HomeWork;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Worker;
 import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -61,7 +58,7 @@ public class MainMenuMapping {
 	
 	public void updateMenuAcount() {
 		//On retire tous les comptes de la liste
-		menuAcount.getItems().remove(3, menuAcount.getItems().size());
+		menuAcount.getItems().remove(5, menuAcount.getItems().size());
 		
 		//Puis on rajoute les comptes restants
 		for(RadioMenuItem item : acount) {
@@ -176,7 +173,7 @@ public class MainMenuMapping {
 		}
 		
 	}
-
+	
 	@FXML
 	private void initialize() {
 		updateCalendar();
